@@ -1,65 +1,12 @@
 # aiken_control_flow
 
-Write validators in the `validators` folder, and supporting functions in the `lib` folder using `.ak` as a file extension.
+This project contains:
 
-```aiken
-validator my_first_validator {
-  spend(_datum: Option<Data>, _redeemer: Data, _output_reference: Data, _context: Data) {
-    True
-  }
-}
-```
+- Basic control flow showcase at [`./lib/control/flow.ak`](./lib/control/flow.ak):
+  - `if-else`
+  - `when-is`
+- Soft-casting (`if-is`) showcase at [`./validators/advanced.ak`](./validators/advanced.ak) and its comparison to `choose_data` (the old way)
 
-## Building
+## Activity
 
-```sh
-aiken build
-```
-
-## Configuring
-
-**aiken.toml**
-```toml
-[config.default]
-network_id = 41
-```
-
-Or, alternatively, write conditional environment modules under `env`.
-
-## Testing
-
-You can write tests in any module using the `test` keyword. For example:
-
-```aiken
-use config
-
-test foo() {
-  config.network_id + 1 == 42
-}
-```
-
-To run all tests, simply do:
-
-```sh
-aiken check
-```
-
-To run only tests matching the string `foo`, do:
-
-```sh
-aiken check -m foo
-```
-
-## Documentation
-
-If you're writing a library, you might want to generate an HTML documentation for it.
-
-Use:
-
-```sh
-aiken docs
-```
-
-## Resources
-
-Find more on the [Aiken's user manual](https://aiken-lang.org).
+Define `fn when_map(_)` that will return `True` when you pass a map containing exactly 1 element of key-value pair where the key is 0 (integer) and the value is 1 (integer), otherwise it will fail.
